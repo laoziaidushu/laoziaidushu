@@ -122,7 +122,6 @@ body {
     left: 0;
 
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
 
     min-height: 64px;
     background: var(--color-surface);
@@ -508,6 +507,54 @@ body {
   .home-book-card {
     grid-template-columns: 80px 1fr;
     gap: 16px;
+  }
+
+}
+
+.site-brand {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-brand-name {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.site-brand-english {
+  color: var(--color-muted);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.desktop-nav a,
+.nav-more-button {
+  padding: 8px 0;
+}
+
+.desktop-nav a:hover,
+.nav-more-button:hover {
+  opacity: 0.65;
+}
+
+@media (max-width: 767px) {
+
+  .site-brand-english {
+    display: none;
+  }
+
+  .mobile-nav {
+    grid-template-columns: repeat(var(--mobile-nav-count), minmax(0, 1fr));
+  }
+
+  .mobile-nav-item {
+    min-height: 64px;
+    padding: 8px 4px;
+    cursor: pointer;
   }
 
 }

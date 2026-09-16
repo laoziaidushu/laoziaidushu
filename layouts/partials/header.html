@@ -1,11 +1,17 @@
 <header class="site-header">
   <div class="container header-inner">
 
-    <a class="site-name" href="{{ "/" | relURL }}">
-      {{ hugo.Data.site.name }}
+    <a class="site-brand" href="{{ "/" | relURL }}">
+      <span class="site-brand-name">
+        {{ hugo.Data.site.name }}
+      </span>
+
+      <span class="site-brand-english">
+        {{ hugo.Data.site.shortName }}
+      </span>
     </a>
 
-    <nav class="desktop-nav" aria-label="Primary navigation">
+    <nav class="desktop-nav" aria-label="主要导航">
       {{ range hugo.Data.navigation.main }}
 
         {{ if eq .key "more" }}

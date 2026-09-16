@@ -1,6 +1,12 @@
-<nav class="mobile-nav" aria-label="Mobile navigation">
+{{ $navItems := hugo.Data.navigation.main }}
 
-  {{ range hugo.Data.navigation.main }}
+<nav
+  class="mobile-nav"
+  aria-label="手机导航"
+  style="--mobile-nav-count: {{ len $navItems }};"
+>
+
+  {{ range $navItems }}
 
     {{ if eq .key "more" }}
 
@@ -8,6 +14,7 @@
         class="mobile-nav-item"
         type="button"
         data-mobile-more-toggle
+        aria-expanded="false"
       >
         <span>{{ .name }}</span>
       </button>
@@ -45,7 +52,10 @@
 
   if (moreToggle && morePanel) {
     moreToggle.addEventListener('click', () => {
-      morePanel.hidden = !morePanel.hidden;
+      const isOpen = !morePanel.hidden;
+
+      morePanel.hidden = isOpen;
+      moreToggle.setAttribute('aria-expanded', String(!isOpen));
     });
   }
 </script>
