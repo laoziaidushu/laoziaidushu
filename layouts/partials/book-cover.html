@@ -1,0 +1,14 @@
+{{ with .Params.cover }}
+  <figure class="book-cover">
+    <img
+      src="{{ . | relURL }}"
+      alt="{{ $.Title }}"
+      loading="lazy"
+      decoding="async"
+    >
+  </figure>
+{{ else }}
+  <div class="book-cover book-cover-placeholder">
+    <span>暂无封面</span>
+  </div>
+{{ end }}

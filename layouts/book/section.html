@@ -1,6 +1,14 @@
 {{ define "main" }}
 
-<section class="section-page">
+{{ $statusLabels := dict
+  "want-to-read" "想读"
+  "reading" "阅读中"
+  "finished" "已读"
+  "paused" "暂停"
+  "dropped" "弃读"
+}}
+
+<section class="book-library">
   <div class="container">
 
     <header class="section-header">
@@ -11,29 +19,53 @@
       {{ end }}
     </header>
 
-    <div class="post-list">
+    <div class="book-grid">
 
       {{ range .Pages.ByDate.Reverse }}
 
-        <article class="post-card">
+        <article class="book-card">
 
-          {{ partial "cover-image.html" . }}
+          <a class="book-card-cover" href="{{ .RelPermalink }}">
+            {{ partial "book-cover.html" . }}
+          </a>
 
-          <h2>
-            <a href="{{ .RelPermalink }}">
-              {{ .Title }}
-            </a>
-          </h2>
+          <div class="book-card-content">
 
-          {{ with .Description }}
-            <p>{{ . }}</p>
-          {{ end }}
+            <h2>
+              <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+            </h2>
 
-          <time datetime="{{ .Date.Format "2006-01-02" }}">
-            {{ .Date.Format "January 2, 2006" }}
-          </time>
+            {{ with .Params.author }}
+              <p class="book-author">{{ . }}</p>
+            {{ end }}
+
+            <div class="book-card-meta">
+
+              {{ with .Params.readingStatus }}
+                <span>
+                  {{ index $statusLabels . | default . }}
+                </span>
+              {{ end }}
+
+              {{ with .Params.rating }}
+                <span>评分 {{ . }}/5</span>
+              {{ end }}
+
+            </div>
+
+            {{ with .Description }}
+              <p class="book-description">{{ . }}</p>
+            {{ end }}
+
+          </div>
 
         </article>
+
+      {{ else }}
+
+        <p>还没有书籍笔记。</p>
 
       {{ end }}
 
