@@ -1,14 +1,14 @@
 colors:
-  background: "#ffffff"
-  surface: "#ffffff"
-  text: "#1c1c1c"
-  muted: "#666666"
-  border: "#e5e5e5"
-  primary: "#1c1c1c"
+  background: "#FAF8F3"
+  surface: "#FFFFFF"
+  text: "#24211D"
+  muted: "#746E66"
+  border: "#E7E1D8"
+  primary: "#8A5A3B"
 
 typography:
-  body: "Arial, sans-serif"
-  heading: "Arial, sans-serif"
+  body: '"Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif'
+  heading: '"Noto Serif SC", "Songti SC", "SimSun", serif'
 
 layout:
   maxWidth: "1120px"
