@@ -7,8 +7,8 @@ public_folder: "/uploads"
 collections:
 
   - name: "book"
-    label: "Book"
-    label_singular: "Book"
+    label: "书籍"
+    label_singular: "书籍"
     folder: "content/book"
     create: true
     extension: "md"
@@ -17,43 +17,91 @@ collections:
     slug: "{{slug}}"
 
     fields:
-      - label: "Title"
+      - label: "书名"
         name: "title"
         widget: "string"
 
-      - label: "Description"
+      - label: "原书名"
+        name: "originalTitle"
+        widget: "string"
+        required: false
+
+      - label: "作者"
+        name: "author"
+        widget: "string"
+
+      - label: "简介"
         name: "description"
         widget: "text"
         required: false
 
-      - label: "Date"
+      - label: "发布日期"
         name: "date"
         widget: "datetime"
         format: "YYYY-MM-DD"
         date_format: "YYYY-MM-DD"
         time_format: false
 
-      - label: "Draft"
+      - label: "草稿"
         name: "draft"
         widget: "boolean"
         default: false
 
-      - label: "Slug"
+      - label: "英文 Slug"
         name: "slug"
         widget: "string"
-        required: false
 
-      - label: "Cover"
+      - label: "封面"
         name: "cover"
         widget: "image"
         required: false
 
-      - label: "Tags"
+      - label: "阅读状态"
+        name: "readingStatus"
+        widget: "select"
+        options:
+          - { label: "想读", value: "want-to-read" }
+          - { label: "阅读中", value: "reading" }
+          - { label: "已读", value: "finished" }
+          - { label: "暂停", value: "paused" }
+          - { label: "弃读", value: "dropped" }
+        default: "finished"
+
+      - label: "评分"
+        name: "rating"
+        widget: "number"
+        value_type: "int"
+        min: 0
+        max: 5
+        default: 0
+
+      - label: "开始阅读日期"
+        name: "startedDate"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: false
+
+      - label: "完成阅读日期"
+        name: "finishedDate"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: false
+
+      - label: "分类"
+        name: "categories"
+        widget: "list"
+        required: false
+
+      - label: "标签"
         name: "tags"
         widget: "list"
         required: false
 
-      - label: "Body"
+      - label: "阅读笔记"
         name: "body"
         widget: "markdown"
 

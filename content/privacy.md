@@ -1,6 +1,6 @@
 ---
-title: "Privacy Policy"
-description: "Privacy policy for this website."
+title: "隐私政策"
+description: "老子爱读书的隐私政策。"
 ---
 
-Replace this page with the website's privacy policy before launch.
+本页面将在网站正式上线前补充完整的隐私政策。

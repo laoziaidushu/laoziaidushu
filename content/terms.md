@@ -1,6 +1,6 @@
 ---
-title: "Terms of Use"
-description: "Terms of use for this website."
+title: "使用条款"
+description: "老子爱读书的使用条款。"
 ---
 
-Replace this page with the website's terms of use before launch.
+本页面将在网站正式上线前补充完整的使用条款。

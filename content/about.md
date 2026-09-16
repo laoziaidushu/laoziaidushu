@@ -1,6 +1,8 @@
 ---
-title: "About"
-description: "Learn more about this website."
+title: "关于"
+description: "关于老子爱读书。"
 ---
 
-Write your About page here.
+这里是「老子爱读书」的关于页面。
+
+这个网站用来记录我的阅读笔记、思考，以及从书中得到的启发。

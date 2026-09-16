@@ -1,6 +1,6 @@
 ---
-title: "Contact"
-description: "Get in touch."
+title: "联系"
+description: "联系老子爱读书。"
 ---
 
-Add your contact information here.
+如果你想与我联系，可以在这里加入联系资料。
