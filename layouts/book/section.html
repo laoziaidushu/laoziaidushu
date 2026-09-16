@@ -19,17 +19,17 @@
       {{ end }}
     </header>
 
-    <div class="book-grid">
+    <div class="book-shelf">
 
       {{ range .Pages.ByDate.Reverse }}
 
-        <article class="book-card">
+        <article class="book-shelf-item">
 
-          <a class="book-card-cover" href="{{ .RelPermalink }}">
+          <a class="book-shelf-cover" href="{{ .RelPermalink }}">
             {{ partial "book-cover.html" . }}
           </a>
 
-          <div class="book-card-content">
+          <div class="book-shelf-info">
 
             <h2>
               <a href="{{ .RelPermalink }}">
@@ -41,22 +41,22 @@
               <p class="book-author">{{ . }}</p>
             {{ end }}
 
-            <div class="book-card-meta">
+            <div class="book-shelf-meta">
 
               {{ with .Params.readingStatus }}
-                <span>
-                  {{ index $statusLabels . | default . }}
-                </span>
+                <span>{{ index $statusLabels . | default . }}</span>
               {{ end }}
 
               {{ with .Params.rating }}
-                <span>评分 {{ . }}/5</span>
+                {{ if gt . 0 }}
+                  <span>{{ . }}/5</span>
+                {{ end }}
               {{ end }}
 
             </div>
 
             {{ with .Description }}
-              <p class="book-description">{{ . }}</p>
+              <p class="book-shelf-description">{{ . }}</p>
             {{ end }}
 
           </div>
