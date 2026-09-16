@@ -1,6 +1,7 @@
+defaultContentLanguage = "zh-cn"
 baseURL = "/"
-locale = "en-US"
-title = "Personal Blog Starter"
+locale = "zh-CN"
+title = "老子爱读书"
 
 disableKinds = []
 

@@ -6,10 +6,10 @@ public_folder: "/uploads"
 
 collections:
 
-  - name: "blog"
-    label: "Blog"
-    label_singular: "Post"
-    folder: "content/blog"
+  - name: "book"
+    label: "Book"
+    label_singular: "Book"
+    folder: "content/book"
     create: true
     extension: "md"
     format: "frontmatter"

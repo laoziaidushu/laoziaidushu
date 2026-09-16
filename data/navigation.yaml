@@ -1,26 +1,26 @@
 main:
-  - name: "Home"
+  - name: "首页"
     url: "/"
     key: "home"
 
-  - name: "Blog"
-    url: "/blog/"
-    key: "blog"
+  - name: "书籍"
+    url: "/book/"
+    key: "book"
 
-  - name: "About"
+  - name: "关于"
     url: "/about/"
     key: "about"
 
-  - name: "More"
+  - name: "更多"
     url: "#"
     key: "more"
 
 more:
-  - name: "Contact"
+  - name: "联系"
     url: "/contact/"
 
-  - name: "Privacy"
+  - name: "隐私政策"
     url: "/privacy/"
 
-  - name: "Terms"
+  - name: "使用条款"
     url: "/terms/"
