@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Categories | Personal Blog Starter</title>
+
+<meta name="description" content="A reusable personal blog starter built with Hugo.">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="/categories/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Categories | Personal Blog Starter">
+<meta property="og:description" content="A reusable personal blog starter built with Hugo.">
+<meta property="og:url" content="/categories/">
+<meta property="og:site_name" content="Personal Blog Starter">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Categories | Personal Blog Starter">
+<meta name="twitter:description" content="A reusable personal blog starter built with Hugo.">
+
+
+
+
+
+
+  
+
+  <style>
+  :root {
+    --color-background: #ffffff;
+    --color-surface: #ffffff;
+    --color-text: #1c1c1c;
+    --color-muted: #666666;
+    --color-border: #e5e5e5;
+    --color-primary: #1c1c1c;
+
+    --font-body: Arial, sans-serif;
+    --font-heading: Arial, sans-serif;
+
+    --layout-max-width: 1120px;
+    --layout-content-width: 760px;
+  }
+</style>
+
+
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+<body>
+
+  <header class="site-header">
+  <div class="container header-inner">
+
+    <a class="site-name" href="/">
+      Personal Blog Starter
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      
+
+        
+
+          <a href="/">
+            Home
+          </a>
+
+        
+
+      
+
+        
+
+          <a href="/blog/">
+            Blog
+          </a>
+
+        
+
+      
+
+        
+
+          <a href="/about/">
+            About
+          </a>
+
+        
+
+      
+
+        
+
+          <div class="nav-more">
+            <button class="nav-more-button" type="button">
+              More
+            </button>
+
+            <div class="nav-more-menu">
+              
+                <a href="/contact/">
+                  Contact
+                </a>
+              
+                <a href="/privacy/">
+                  Privacy
+                </a>
+              
+                <a href="/terms/">
+                  Terms
+                </a>
+              
+            </div>
+          </div>
+
+        
+
+      
+    </nav>
+
+  </div>
+</header>
+
+
+  <main>
+    
+
+<section class="section-page">
+  <div class="container">
+
+    <header class="section-header">
+      <h1>Categories</h1>
+
+      
+    </header>
+
+    <div class="post-list">
+      
+    </div>
+
+  </div>
+</section>
+
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="container">
+    <p>
+      © 2026 Personal Blog Starter
+    </p>
+  </div>
+</footer>
+
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+
+  
+
+    
+
+      <a
+        class="mobile-nav-item"
+        href="/"
+      >
+        <span>Home</span>
+      </a>
+
+    
+
+  
+
+    
+
+      <a
+        class="mobile-nav-item"
+        href="/blog/"
+      >
+        <span>Blog</span>
+      </a>
+
+    
+
+  
+
+    
+
+      <a
+        class="mobile-nav-item"
+        href="/about/"
+      >
+        <span>About</span>
+      </a>
+
+    
+
+  
+
+    
+
+      <button
+        class="mobile-nav-item"
+        type="button"
+        data-mobile-more-toggle
+      >
+        <span>More</span>
+      </button>
+
+    
+
+  
+
+</nav>
+
+<div class="mobile-more-panel" data-mobile-more-panel hidden>
+  <div class="mobile-more-content">
+
+    
+      <a href="/contact/">
+        Contact
+      </a>
+    
+      <a href="/privacy/">
+        Privacy
+      </a>
+    
+      <a href="/terms/">
+        Terms
+      </a>
+    
+
+  </div>
+</div>
+
+<script>
+  const moreToggle = document.querySelector('[data-mobile-more-toggle]');
+  const morePanel = document.querySelector('[data-mobile-more-panel]');
+
+  if (moreToggle && morePanel) {
+    moreToggle.addEventListener('click', () => {
+      morePanel.hidden = !morePanel.hidden;
+    });
+  }
+</script>
+
+
+</body>
+</html>

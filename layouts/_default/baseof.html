@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ hugo.Data.site.language | default "en" }}">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {{ partial "seo.html" . }}
+
+  {{ with hugo.Data.site.branding.favicon }}
+    <link rel="icon" href="{{ . | relURL }}">
+  {{ end }}
+
+  {{ partial "design-tokens.html" . }}
+
+  <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+
+</head>
+
+<body>
+
+  {{ partial "header.html" . }}
+
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  {{ partial "mobile-nav.html" . }}
+
+</body>
+</html>

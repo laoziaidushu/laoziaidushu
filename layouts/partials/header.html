@@ -1,0 +1,39 @@
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="site-name" href="{{ "/" | relURL }}">
+      {{ hugo.Data.site.name }}
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {{ range hugo.Data.navigation.main }}
+
+        {{ if eq .key "more" }}
+
+          <div class="nav-more">
+            <button class="nav-more-button" type="button">
+              {{ .name }}
+            </button>
+
+            <div class="nav-more-menu">
+              {{ range hugo.Data.navigation.more }}
+                <a href="{{ .url | relURL }}">
+                  {{ .name }}
+                </a>
+              {{ end }}
+            </div>
+          </div>
+
+        {{ else }}
+
+          <a href="{{ .url | relURL }}">
+            {{ .name }}
+          </a>
+
+        {{ end }}
+
+      {{ end }}
+    </nav>
+
+  </div>
+</header>

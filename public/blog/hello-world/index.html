@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hello World | Personal Blog Starter</title>
+
+<meta name="description" content="This is a sample post for testing the Personal Blog Starter.">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="/blog/hello-world/">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World | Personal Blog Starter">
+<meta property="og:description" content="This is a sample post for testing the Personal Blog Starter.">
+<meta property="og:url" content="/blog/hello-world/">
+<meta property="og:site_name" content="Personal Blog Starter">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hello World | Personal Blog Starter">
+<meta name="twitter:description" content="This is a sample post for testing the Personal Blog Starter.">
+
+
+
+
+
+
+  
+
+  <style>
+  :root {
+    --color-background: #ffffff;
+    --color-surface: #ffffff;
+    --color-text: #1c1c1c;
+    --color-muted: #666666;
+    --color-border: #e5e5e5;
+    --color-primary: #1c1c1c;
+
+    --font-body: Arial, sans-serif;
+    --font-heading: Arial, sans-serif;
+
+    --layout-max-width: 1120px;
+    --layout-content-width: 760px;
+  }
+</style>
+
+
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+<body>
+
+  <header class="site-header">
+  <div class="container header-inner">
+
+    <a class="site-name" href="/">
+      Personal Blog Starter
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      
+
+        
+
+          <a href="/">
+            Home
+          </a>
+
+        
+
+      
+
+        
+
+          <a href="/blog/">
+            Blog
+          </a>
+
+        
+
+      
+
+        
+
+          <a href="/about/">
+            About
+          </a>
+
+        
+
+      
+
+        
+
+          <div class="nav-more">
+            <button class="nav-more-button" type="button">
+              More
+            </button>
+
+            <div class="nav-more-menu">
+              
+                <a href="/contact/">
+                  Contact
+                </a>
+              
+                <a href="/privacy/">
+                  Privacy
+                </a>
+              
+                <a href="/terms/">
+                  Terms
+                </a>
+              
+            </div>
+          </div>
+
+        
+
+      
+    </nav>
+
+  </div>
+</header>
+
+
+  <main>
+    
+
+<article class="article-page">
+  <div class="container article-container">
+
+    <header class="article-header">
+
+      <h1>Hello World</h1>
+
+      
+        <p class="article-description">
+          This is a sample post for testing the Personal Blog Starter.
+        </p>
+      
+
+      <time datetime="2026-09-16">
+        September 16, 2026
+      </time>
+
+    </header>
+
+    
+
+
+    <div class="article-content">
+      <p>This is a sample blog post.</p>
+<h2 id="why-this-exists">Why this exists</h2>
+<p>This article is used to test the reusable blog structure.</p>
+<h2 id="second-heading">Second heading</h2>
+<p>If you can see this page correctly, the blog content system is working.</p>
+
+    </div>
+
+  </div>
+</article>
+
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="container">
+    <p>
+      © 2026 Personal Blog Starter
+    </p>
+  </div>
+</footer>
+
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+
+  
+
+    
+
+      <a
+        class="mobile-nav-item"
+        href="/"
+      >
+        <span>Home</span>
+      </a>
+
+    
+
+  
+
+    
+
+      <a
+        class="mobile-nav-item"
+        href="/blog/"
+      >
+        <span>Blog</span>
+      </a>
+
+    
+
+  
+
+    
+
+      <a
+        class="mobile-nav-item"
+        href="/about/"
+      >
+        <span>About</span>
+      </a>
+
+    
+
+  
+
+    
+
+      <button
+        class="mobile-nav-item"
+        type="button"
+        data-mobile-more-toggle
+      >
+        <span>More</span>
+      </button>
+
+    
+
+  
+
+</nav>
+
+<div class="mobile-more-panel" data-mobile-more-panel hidden>
+  <div class="mobile-more-content">
+
+    
+      <a href="/contact/">
+        Contact
+      </a>
+    
+      <a href="/privacy/">
+        Privacy
+      </a>
+    
+      <a href="/terms/">
+        Terms
+      </a>
+    
+
+  </div>
+</div>
+
+<script>
+  const moreToggle = document.querySelector('[data-mobile-more-toggle]');
+  const morePanel = document.querySelector('[data-mobile-more-panel]');
+
+  if (moreToggle && morePanel) {
+    moreToggle.addEventListener('click', () => {
+      morePanel.hidden = !morePanel.hidden;
+    });
+  }
+</script>
+
+
+</body>
+</html>

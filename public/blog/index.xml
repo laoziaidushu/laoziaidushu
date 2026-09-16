@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Blog on Personal Blog Starter</title>
+		<link>/blog/</link>
+		<description>Recent content in Blog on Personal Blog Starter</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 16 Sep 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Hello World</title>
+				<link>/blog/hello-world/</link>
+				<pubDate>Wed, 16 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>/blog/hello-world/</guid>
+				<description>&lt;p&gt;This is a sample blog post.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-this-exists&#34;&gt;Why this exists&lt;/h2&gt;&#xA;&lt;p&gt;This article is used to test the reusable blog structure.&lt;/p&gt;&#xA;&lt;h2 id=&#34;second-heading&#34;&gt;Second heading&lt;/h2&gt;&#xA;&lt;p&gt;If you can see this page correctly, the blog content system is working.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

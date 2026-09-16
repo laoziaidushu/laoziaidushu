@@ -1,0 +1,42 @@
+{{- $siteName := hugo.Data.site.name -}}
+{{- $siteDescription := hugo.Data.site.description -}}
+
+{{- $title := $siteName -}}
+{{- if not .IsHome -}}
+  {{- $title = printf "%s | %s" .Title $siteName -}}
+{{- end -}}
+
+{{- $description := $siteDescription -}}
+{{- with .Description -}}
+  {{- $description = . -}}
+{{- end -}}
+
+<title>{{ $title }}</title>
+
+<meta name="description" content="{{ $description }}">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="{{ .Permalink }}">
+
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ $siteName }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+
+{{ with .Params.cover }}
+  <meta property="og:image" content="{{ . | absURL }}">
+  <meta name="twitter:image" content="{{ . | absURL }}">
+{{ end }}
+
+{{ with .OutputFormats.Get "RSS" }}
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="{{ $siteName }}"
+    href="{{ .RelPermalink }}">
+{{ end }}

@@ -1,0 +1,45 @@
+{{ define "main" }}
+
+<section class="section-page">
+  <div class="container">
+
+    <header class="section-header">
+      <h1>{{ .Title }}</h1>
+
+      {{ with .Description }}
+        <p>{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <div class="post-list">
+
+      {{ range .Pages.ByDate.Reverse }}
+
+        <article class="post-card">
+
+          {{ partial "cover-image.html" . }}
+
+          <h2>
+            <a href="{{ .RelPermalink }}">
+              {{ .Title }}
+            </a>
+          </h2>
+
+          {{ with .Description }}
+            <p>{{ . }}</p>
+          {{ end }}
+
+          <time datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "January 2, 2006" }}
+          </time>
+
+        </article>
+
+      {{ end }}
+
+    </div>
+
+  </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,10 @@
+{{ with .Params.cover }}
+  <figure class="cover-image">
+    <img
+      src="{{ . | relURL }}"
+      alt="{{ $.Title }}"
+      loading="lazy"
+      decoding="async"
+    >
+  </figure>
+{{ end }}

@@ -1,0 +1,51 @@
+<nav class="mobile-nav" aria-label="Mobile navigation">
+
+  {{ range hugo.Data.navigation.main }}
+
+    {{ if eq .key "more" }}
+
+      <button
+        class="mobile-nav-item"
+        type="button"
+        data-mobile-more-toggle
+      >
+        <span>{{ .name }}</span>
+      </button>
+
+    {{ else }}
+
+      <a
+        class="mobile-nav-item"
+        href="{{ .url | relURL }}"
+      >
+        <span>{{ .name }}</span>
+      </a>
+
+    {{ end }}
+
+  {{ end }}
+
+</nav>
+
+<div class="mobile-more-panel" data-mobile-more-panel hidden>
+  <div class="mobile-more-content">
+
+    {{ range hugo.Data.navigation.more }}
+      <a href="{{ .url | relURL }}">
+        {{ .name }}
+      </a>
+    {{ end }}
+
+  </div>
+</div>
+
+<script>
+  const moreToggle = document.querySelector('[data-mobile-more-toggle]');
+  const morePanel = document.querySelector('[data-mobile-more-panel]');
+
+  if (moreToggle && morePanel) {
+    moreToggle.addEventListener('click', () => {
+      morePanel.hidden = !morePanel.hidden;
+    });
+  }
+</script>

@@ -1,0 +1,26 @@
+main:
+  - name: "Home"
+    url: "/"
+    key: "home"
+
+  - name: "Blog"
+    url: "/blog/"
+    key: "blog"
+
+  - name: "About"
+    url: "/about/"
+    key: "about"
+
+  - name: "More"
+    url: "#"
+    key: "more"
+
+more:
+  - name: "Contact"
+    url: "/contact/"
+
+  - name: "Privacy"
+    url: "/privacy/"
+
+  - name: "Terms"
+    url: "/terms/"

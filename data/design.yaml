@@ -1,0 +1,16 @@
+colors:
+  background: "#ffffff"
+  surface: "#ffffff"
+  text: "#1c1c1c"
+  muted: "#666666"
+  border: "#e5e5e5"
+  primary: "#1c1c1c"
+
+typography:
+  body: "Arial, sans-serif"
+  heading: "Arial, sans-serif"
+
+layout:
+  maxWidth: "1120px"
+  contentWidth: "760px"
+  mobileBreakpoint: "767px"

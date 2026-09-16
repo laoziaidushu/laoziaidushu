@@ -1,0 +1,23 @@
+name: "Personal Blog Starter"
+shortName: "Blog Starter"
+description: "A reusable personal blog starter built with Hugo."
+language: "en"
+locale: "en_US"
+
+author:
+  name: "Your Name"
+
+branding:
+  logo: ""
+  favicon: ""
+
+social:
+  email: ""
+  website: ""
+  instagram: ""
+  threads: ""
+  facebook: ""
+  x: ""
+
+footer:
+  copyright: ""
