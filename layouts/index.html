@@ -1,9 +1,86 @@
 {{ define "main" }}
 
 <section class="home-hero">
-  <div class="container">
+  <div class="container home-hero-inner">
+
+    <p class="home-eyebrow">Lao Zi Ai Du Shu</p>
+
     <h1>{{ hugo.Data.site.name }}</h1>
-    <p>{{ hugo.Data.site.description }}</p>
+
+    <p class="home-intro">
+      {{ hugo.Data.site.description }}
+    </p>
+
+    <a class="home-primary-link" href="{{ "/book/" | relURL }}">
+      查看我的书籍
+    </a>
+
+  </div>
+</section>
+
+<section class="home-section">
+  <div class="container">
+
+    <div class="home-section-header">
+      <h2>最近阅读</h2>
+
+      <a href="{{ "/book/" | relURL }}">
+        查看全部
+      </a>
+    </div>
+
+    <div class="home-book-list">
+
+      {{ with site.GetPage "/book" }}
+
+        {{ range first 10 .Pages.ByDate.Reverse }}
+
+          <article class="home-book-card">
+
+            <a class="home-book-cover" href="{{ .RelPermalink }}">
+              {{ partial "book-cover.html" . }}
+            </a>
+
+            <div>
+              <h3>
+                <a href="{{ .RelPermalink }}">
+                  {{ .Title }}
+                </a>
+              </h3>
+
+              {{ with .Params.author }}
+                <p class="book-author">{{ . }}</p>
+              {{ end }}
+
+              {{ with .Description }}
+                <p>{{ . }}</p>
+              {{ end }}
+            </div>
+
+          </article>
+
+        {{ end }}
+
+      {{ end }}
+
+    </div>
+
+  </div>
+</section>
+
+<section class="home-section home-about">
+  <div class="container">
+
+    <h2>关于老子爱读书</h2>
+
+    <p>
+      这里记录我读过的书、阅读过程中的笔记，以及这些内容带给我的思考与启发。
+    </p>
+
+    <a href="{{ "/about/" | relURL }}">
+      了解更多
+    </a>
+
   </div>
 </section>
 
