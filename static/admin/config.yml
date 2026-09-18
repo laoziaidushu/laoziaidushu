@@ -21,7 +21,7 @@ collections:
         name: "title"
         widget: "string"
 
-      - label: "原书名"
+      - label: "英文书名"
         name: "originalTitle"
         widget: "string"
         required: false
@@ -29,6 +29,11 @@ collections:
       - label: "作者"
         name: "author"
         widget: "string"
+
+      - label: "出版年份"
+        name: "publicationYear"
+        widget: "string"
+        required: false
 
       - label: "简介"
         name: "description"
@@ -56,6 +61,16 @@ collections:
         widget: "image"
         required: false
 
+      - label: "分类"
+        name: "categories"
+        widget: "list"
+        required: false
+
+      - label: "标签"
+        name: "tags"
+        widget: "list"
+        required: false
+
       - label: "阅读状态"
         name: "readingStatus"
         widget: "select"
@@ -67,7 +82,7 @@ collections:
           - { label: "弃读", value: "dropped" }
         default: "finished"
 
-      - label: "评分"
+      - label: "我的评分"
         name: "rating"
         widget: "number"
         value_type: "int"
@@ -89,16 +104,6 @@ collections:
         format: "YYYY-MM-DD"
         date_format: "YYYY-MM-DD"
         time_format: false
-        required: false
-
-      - label: "分类"
-        name: "categories"
-        widget: "list"
-        required: false
-
-      - label: "标签"
-        name: "tags"
-        widget: "list"
         required: false
 
       - label: "阅读笔记"
