@@ -1,4 +1,17 @@
+# General search engines
 User-agent: *
 Allow: /
+
+# Google Search
+User-agent: Googlebot
+Allow: /
+
+# OpenAI Search / ChatGPT Search
+User-agent: OAI-SearchBot
+Allow: /
+
+# Do not use site content for GPTBot training crawling
+User-agent: GPTBot
+Disallow: /
 
 Sitemap: {{ "sitemap.xml" | absURL }}

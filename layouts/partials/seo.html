@@ -1,42 +1,92 @@
 {{- $siteName := hugo.Data.site.name -}}
 {{- $siteDescription := hugo.Data.site.description -}}
 
+{{/* SEO title */}}
 {{- $title := $siteName -}}
+
 {{- if not .IsHome -}}
-  {{- $title = printf "%s | %s" .Title $siteName -}}
+  {{- if .Params.seoTitle -}}
+    {{- $title = .Params.seoTitle -}}
+  {{- else if and .IsPage (eq .Section "book") -}}
+    {{- $title = printf "%s｜阅读笔记 | %s" .Title $siteName -}}
+  {{- else -}}
+    {{- $title = printf "%s | %s" .Title $siteName -}}
+  {{- end -}}
 {{- end -}}
 
+{{/* SEO description */}}
 {{- $description := $siteDescription -}}
-{{- with .Description -}}
-  {{- $description = . -}}
+
+{{- if .Params.seoDescription -}}
+  {{- $description = .Params.seoDescription -}}
+{{- else if .Description -}}
+  {{- $description = .Description -}}
+{{- end -}}
+
+{{/* Social image priority:
+     1. socialImage
+     2. cover
+     3. site default image
+*/}}
+{{- $image := hugo.Data.site.defaultSocialImage | default "" -}}
+
+{{- with .Params.socialImage -}}
+  {{- $image = . -}}
+{{- else -}}
+  {{- with .Params.cover -}}
+    {{- $image = . -}}
+  {{- end -}}
 {{- end -}}
 
 <title>{{ $title }}</title>
 
 <meta name="description" content="{{ $description }}">
-<meta name="robots" content="index, follow">
+
+<meta
+  name="robots"
+  content="index, follow, max-image-preview:large">
 
 <link rel="canonical" href="{{ .Permalink }}">
 
-<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:type"
+      content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:site_name" content="{{ $siteName }}">
+<meta property="og:locale" content="zh_CN">
 
-<meta name="twitter:card" content="summary_large_image">
+{{ with $image }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{ end }}
+
+<meta name="twitter:card"
+      content="{{ if $image }}summary_large_image{{ else }}summary{{ end }}">
+
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $description }}">
 
-{{ with .Params.cover }}
-  <meta property="og:image" content="{{ . | absURL }}">
-  <meta name="twitter:image" content="{{ . | absURL }}">
+{{ with $image }}
+<meta name="twitter:image" content="{{ . | absURL }}">
+{{ end }}
+
+{{ if and .IsPage (eq .Section "book") }}
+<meta property="article:published_time"
+      content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+
+<meta property="article:modified_time"
+      content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+
+{{ range .Params.tags }}
+<meta property="article:tag" content="{{ . }}">
+{{ end }}
 {{ end }}
 
 {{ with .OutputFormats.Get "RSS" }}
-  <link
-    rel="alternate"
-    type="application/rss+xml"
-    title="{{ $siteName }}"
-    href="{{ .RelPermalink }}">
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="{{ $siteName }}"
+  href="{{ .RelPermalink }}">
 {{ end }}

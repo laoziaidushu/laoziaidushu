@@ -4,6 +4,8 @@ locale = "zh-CN"
 title = "老子爱读书"
 
 disableKinds = []
+enableRobotsTXT = true
+enableGitInfo = true
 
 [outputs]
 home = ["HTML", "RSS"]
@@ -16,4 +18,15 @@ changeFreq = "weekly"
 priority = 0.5
 filename = "sitemap.xml"
 
-enableRobotsTXT = true
+[related]
+includeNewer = true
+threshold = 10
+toLower = true
+
+[[related.indices]]
+name = "categories"
+weight = 100
+
+[[related.indices]]
+name = "tags"
+weight = 70

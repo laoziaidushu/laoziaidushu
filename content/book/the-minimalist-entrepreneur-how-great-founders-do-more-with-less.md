@@ -4,6 +4,9 @@ originalTitle: "The Minimalist Entrepreneur: How Great Founders Do More with Les
 author: "Sahil Lavingia"
 publicationYear: "2021"
 description: "一本讨论如何从社区和真实需求出发，以更少资源建立可持续、能够盈利的事业的创业书。"
+seoTitle: ""
+seoDescription: "《小而美》阅读笔记：整理社区、真实需求、盈利、小团队和可持续经营等重点，并记录我的理解、应用、行动与长期回顾。"
+socialImage: ""
 date: 2026-09-16
 draft: false
 slug: "the-minimalist-entrepreneur-how-great-founders-do-more-with-less"

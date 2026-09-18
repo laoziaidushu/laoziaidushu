@@ -21,3 +21,5 @@ social:
 
 footer:
   copyright: ""
+
+defaultSocialImage: "/images/og-default.png"

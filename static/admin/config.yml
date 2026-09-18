@@ -40,6 +40,24 @@ collections:
         widget: "text"
         required: false
 
+      - label: "SEO 标题"
+        name: "seoTitle"
+        widget: "string"
+        required: false
+        hint: "可选。不填写时系统自动使用书名 + 阅读笔记 + 网站名称。"
+
+      - label: "SEO 描述"
+        name: "seoDescription"
+        widget: "text"
+        required: false
+        hint: "可选。用于搜索结果摘要，建议清楚描述这篇阅读笔记的内容。"
+
+      - label: "社交分享图片"
+        name: "socialImage"
+        widget: "image"
+        required: false
+        hint: "可选。没有填写时优先使用书籍封面。"
+
       - label: "发布日期"
         name: "date"
         widget: "datetime"

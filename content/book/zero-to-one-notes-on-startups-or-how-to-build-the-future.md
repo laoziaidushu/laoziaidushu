@@ -4,6 +4,9 @@ originalTitle: "Zero to One: Notes on Startups, or How to Build the Future"
 author: "Peter Thiel, Blake Masters"
 publicationYear: "2014"
 description: "关于创业、创新、竞争、垄断，以及如何从无到有创造真正新事物的一本书。"
+seoTitle: ""
+seoDescription: "《从0到1》阅读笔记：整理从0到1、竞争与垄断、创新、创业团队和未来思考，并记录我的理解、应用、行动与回顾。"
+socialImage: ""
 date: 2026-09-16
 draft: false
 slug: "zero-to-one-notes-on-startups-or-how-to-build-the-future"

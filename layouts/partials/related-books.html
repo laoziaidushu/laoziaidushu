@@ -1,0 +1,55 @@
+{{- $page := . -}}
+{{- $related := site.RegularPages.Related . -}}
+{{- $relatedBooks := where $related "Section" "book" -}}
+{{- $relatedBooks = first 4 $relatedBooks -}}
+
+{{- with $relatedBooks }}
+<section class="related-books" aria-labelledby="related-books-title">
+
+  <div class="related-books-heading">
+    <p>Keep Reading</p>
+    <h2 id="related-books-title">相关书籍</h2>
+  </div>
+
+  <div class="related-books-grid">
+
+    {{ range . }}
+    <article class="related-book-card">
+
+      <a
+        class="related-book-cover"
+        href="{{ .RelPermalink }}"
+        aria-label="查看《{{ .Title }}》阅读笔记"
+      >
+        {{ partial "book-cover.html" . }}
+      </a>
+
+      <div class="related-book-info">
+
+        <h3>
+          <a href="{{ .RelPermalink }}">
+            {{ .Title }}
+          </a>
+        </h3>
+
+        {{ with .Params.author }}
+        <p class="related-book-author">
+          {{ . }}
+        </p>
+        {{ end }}
+
+        {{ with .Description }}
+        <p class="related-book-description">
+          {{ . }}
+        </p>
+        {{ end }}
+
+      </div>
+
+    </article>
+    {{ end }}
+
+  </div>
+
+</section>
+{{- end }}

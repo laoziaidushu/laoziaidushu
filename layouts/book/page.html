@@ -11,6 +11,8 @@
 <article class="book-page">
   <div class="container book-detail-container">
 
+    {{ partial "breadcrumbs.html" . }}
+
     <section class="book-detail-hero">
 
       <div class="book-detail-cover">
@@ -31,12 +33,6 @@
           <p class="book-original-title">{{ . }}</p>
         {{ end }}
 
-        {{ with .Params.author }}
-          <p class="book-detail-author">
-            作者：{{ . }}
-          </p>
-        {{ end }}
-
         {{ with .Description }}
           <p class="book-detail-summary">
             {{ . }}
@@ -45,28 +41,70 @@
 
         <dl class="book-detail-meta">
 
-          {{ with .Params.rating }}
-            {{ if gt . 0 }}
-              <div>
-                <dt>我的评分</dt>
-                <dd>{{ . }}/5</dd>
-              </div>
-            {{ end }}
-          {{ end }}
-
-          {{ with .Params.startedDate }}
+          {{ with .Params.author }}
             <div>
-              <dt>开始阅读</dt>
-              <dd>{{ time.Format "2006-01-02" . }}</dd>
+              <dt>作者</dt>
+              <dd>{{ . }}</dd>
             </div>
           {{ end }}
 
-          {{ with .Params.finishedDate }}
+          {{ with .Params.publicationYear }}
             <div>
-              <dt>完成阅读</dt>
-              <dd>{{ time.Format "2006-01-02" . }}</dd>
+              <dt>出版年份</dt>
+              <dd>{{ . }}</dd>
             </div>
           {{ end }}
+
+          {{ with .Params.categories }}
+            <div>
+              <dt>分类</dt>
+              <dd>{{ delimit . " · " }}</dd>
+            </div>
+          {{ end }}
+
+          {{ with .Params.readingStatus }}
+            <div>
+              <dt>阅读状态</dt>
+              <dd>{{ index $statusLabels . | default . }}</dd>
+            </div>
+          {{ end }}
+
+          <div>
+            <dt>我的评分</dt>
+            <dd>
+              {{ with .Params.rating }}
+                {{ if gt . 0 }}
+                  {{ . }}/5
+                {{ else }}
+                  尚未评分
+                {{ end }}
+              {{ else }}
+                尚未评分
+              {{ end }}
+            </dd>
+          </div>
+
+          <div>
+            <dt>开始阅读</dt>
+            <dd>
+              {{ with .Params.startedDate }}
+                {{ time.Format "2006-01-02" . }}
+              {{ else }}
+                —
+              {{ end }}
+            </dd>
+          </div>
+
+          <div>
+            <dt>完成阅读</dt>
+            <dd>
+              {{ with .Params.finishedDate }}
+                {{ time.Format "2006-01-02" . }}
+              {{ else }}
+                —
+              {{ end }}
+            </dd>
+          </div>
 
         </dl>
 
@@ -79,6 +117,13 @@
       <div class="book-notes-heading">
         <p>Reading Notes</p>
         <h2>我的阅读笔记</h2>
+
+        <p class="book-note-byline">
+          整理：
+          <a href="{{ "/about/" | relURL }}">老子爱读书</a>
+          <span aria-hidden="true">·</span>
+          最后更新：<time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006年1月2日" }}</time>
+        </p>
       </div>
 
       <div class="book-content">
@@ -86,6 +131,8 @@
       </div>
 
     </section>
+
+    {{ partial "related-books.html" . }}
 
   </div>
 </article>
