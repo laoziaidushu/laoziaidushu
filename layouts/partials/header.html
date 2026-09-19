@@ -2,12 +2,22 @@
   <div class="container header-inner">
 
     <a class="site-brand" href="{{ "/" | relURL }}">
-      <span class="site-brand-name">
-        {{ hugo.Data.site.name }}
-      </span>
+      {{ with hugo.Data.site.branding.logo }}
+        <img
+          class="site-logo"
+          src="{{ . | relURL }}"
+          alt="{{ hugo.Data.site.name }}"
+        >
+      {{ end }}
 
-      <span class="site-brand-english">
-        {{ hugo.Data.site.alternateName }}
+      <span class="site-brand-text">
+        <span class="site-brand-name">
+          {{ hugo.Data.site.name }}
+        </span>
+
+        <span class="site-brand-english">
+          {{ hugo.Data.site.alternateName }}
+        </span>
       </span>
     </a>
 

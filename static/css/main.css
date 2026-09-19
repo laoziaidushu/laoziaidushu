@@ -513,10 +513,23 @@ body {
 
 .site-brand {
   display: inline-flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 10px;
   color: inherit;
   text-decoration: none;
+}
+
+.site-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.site-logo {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 .site-brand-name {
