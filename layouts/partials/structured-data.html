@@ -4,6 +4,7 @@
 {{- $siteLanguage := hugo.Data.site.language | default "zh-CN" -}}
 {{- $siteID := printf "%s#website" site.Home.Permalink -}}
 {{- $aboutURL := "/about/" | absURL -}}
+{{- $authorName := hugo.Data.site.author.name | default "" -}}
 
 {{/* Homepage */}}
 {{- if .IsHome }}
@@ -45,9 +46,15 @@
   "dateModified": {{ (.Lastmod.Format "2006-01-02") | jsonify | safeJS }},
 
   "author": {
+    {{- if $authorName }}
+    "@type": "Person",
+    "name": {{ $authorName | jsonify | safeJS }},
+    "url": {{ $aboutURL | jsonify | safeJS }}
+    {{- else }}
     "@type": "Organization",
     "name": {{ $siteName | jsonify | safeJS }},
     "url": {{ $aboutURL | jsonify | safeJS }}
+    {{- end }}
   },
 
   "publisher": {
@@ -106,9 +113,15 @@
     "review": {
       "@type": "Review",
       "author": {
+        {{- if $authorName }}
+        "@type": "Person",
+        "name": {{ $authorName | jsonify | safeJS }},
+        "url": {{ $aboutURL | jsonify | safeJS }}
+        {{- else }}
         "@type": "Organization",
         "name": {{ $siteName | jsonify | safeJS }},
         "url": {{ $aboutURL | jsonify | safeJS }}
+        {{- end }}
       },
       "datePublished": {{ ($.Date.Format "2006-01-02") | jsonify | safeJS }},
       "reviewRating": {
