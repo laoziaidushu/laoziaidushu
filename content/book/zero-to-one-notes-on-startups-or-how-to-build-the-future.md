@@ -18,8 +18,8 @@ startedDate: ""
 finishedDate: ""
 
 categories:
-  - 商业与战略
-  - 科技与科学
+  - business
+  - technology
 
 tags:
   - "创新"

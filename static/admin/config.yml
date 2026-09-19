@@ -139,13 +139,13 @@ collections:
         multiple: true
         required: false
         options:
-          - "商业与战略"
-          - "心理与人性"
-          - "财富与投资"
-          - "哲学与思想"
-          - "历史与人物"
-          - "科技与科学"
-          - "生活与成长"
+          - { label: "商业与战略", value: "business" }
+          - { label: "心理与人性", value: "psychology" }
+          - { label: "财富与投资", value: "finance" }
+          - { label: "哲学与思想", value: "philosophy" }
+          - { label: "历史与人物", value: "history" }
+          - { label: "科技与科学", value: "technology" }
+          - { label: "生活与成长", value: "growth" }
         hint: "可选择一个或多个主要分类。更具体的主题请放在标签中。"
 
       - label: "标签"

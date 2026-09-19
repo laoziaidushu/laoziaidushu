@@ -1,14 +1,15 @@
 {{- $categories := slice
-  "商业与战略"
-  "心理与人性"
-  "财富与投资"
-  "哲学与思想"
-  "历史与人物"
-  "科技与科学"
-  "生活与成长"
+  "business"
+  "psychology"
+  "finance"
+  "philosophy"
+  "history"
+  "technology"
+  "growth"
 -}}
 
 <nav class="book-category-nav" aria-label="书籍分类">
+
   <a
     href="{{ "/book/" | relURL }}"
     {{ if eq .RelPermalink "/book/" }}aria-current="page"{{ end }}
@@ -17,14 +18,20 @@
   </a>
 
   {{- range $categories }}
+
     {{- $term := site.GetPage (printf "/categories/%s" .) }}
-    {{- if $term }}
+
+    {{- if and $term (gt (len $term.Pages) 0) }}
+
       <a
         href="{{ $term.RelPermalink }}"
         {{ if eq $.RelPermalink $term.RelPermalink }}aria-current="page"{{ end }}
       >
-        {{ . }}
+        {{ $term.LinkTitle }}
       </a>
+
     {{- end }}
+
   {{- end }}
+
 </nav>
