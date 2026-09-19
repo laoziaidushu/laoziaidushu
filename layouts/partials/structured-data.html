@@ -1,4 +1,5 @@
 {{- $siteName := hugo.Data.site.name -}}
+{{- $siteAlternateName := hugo.Data.site.alternateName | default "" -}}
 {{- $siteDescription := hugo.Data.site.description -}}
 {{- $siteLanguage := hugo.Data.site.language | default "zh-CN" -}}
 {{- $siteID := printf "%s#website" site.Home.Permalink -}}
