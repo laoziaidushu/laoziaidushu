@@ -45,12 +45,17 @@
 {{/* Taxonomy indexing rules */}}
 {{- $robots := "index, follow, max-image-preview:large" -}}
 
-{{/* Empty taxonomy pages should not be indexed */}}
+{{/* Taxonomy root pages are navigation utilities, not primary search pages */}}
+{{- if eq .Kind "taxonomy" -}}
+  {{- $robots = "noindex, follow" -}}
+{{- end -}}
+
+{{/* Empty taxonomy term pages should not be indexed */}}
 {{- if and (eq .Kind "term") (eq (len .Pages) 0) -}}
   {{- $robots = "noindex, follow" -}}
 {{- end -}}
 
-{{/* Tag pages are useful for navigation, but not indexed for now */}}
+{{/* Tag term pages remain navigation-only for now */}}
 {{- if and (eq .Kind "term") (eq .Data.Plural "tags") -}}
   {{- $robots = "noindex, follow" -}}
 {{- end -}}
