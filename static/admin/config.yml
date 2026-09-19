@@ -4,6 +4,11 @@ backend:
 media_folder: "static/uploads"
 public_folder: "/uploads"
 
+show_preview_links: false
+
+editor:
+  preview: false
+
 collections:
 
   - name: "book"
@@ -14,9 +19,31 @@ collections:
     extension: "md"
     format: "frontmatter"
 
-    slug: "{{slug}}"
+    description: "管理我的阅读书籍、阅读状态与阅读笔记。"
+    summary: "{{title}} — {{author}}"
+
+    sortable_fields:
+      - "date"
+      - "title"
+      - "author"
+
+    view_filters:
+      - label: "草稿"
+        field: "draft"
+        pattern: true
+      - label: "阅读中"
+        field: "readingStatus"
+        pattern: "reading"
+      - label: "已读"
+        field: "readingStatus"
+        pattern: "finished"
+
+    slug: "{{fields.slug}}"
+    preview_path: "book/{{slug}}"
 
     fields:
+
+      # 基本资料
       - label: "书名"
         name: "title"
         widget: "string"
@@ -39,56 +66,23 @@ collections:
         name: "description"
         widget: "text"
         required: false
-
-      - label: "SEO 标题"
-        name: "seoTitle"
-        widget: "string"
-        required: false
-        hint: "可选。不填写时系统自动使用书名 + 阅读笔记 + 网站名称。"
-
-      - label: "SEO 描述"
-        name: "seoDescription"
-        widget: "text"
-        required: false
-        hint: "可选。用于搜索结果摘要，建议清楚描述这篇阅读笔记的内容。"
-
-      - label: "社交分享图片"
-        name: "socialImage"
-        widget: "image"
-        required: false
-        hint: "可选。没有填写时优先使用书籍封面。"
-
-      - label: "发布日期"
-        name: "date"
-        widget: "datetime"
-        format: "YYYY-MM-DD"
-        date_format: "YYYY-MM-DD"
-        time_format: false
-
-      - label: "草稿"
-        name: "draft"
-        widget: "boolean"
-        default: false
+        hint: "简单说明这本书主要讨论什么。"
 
       - label: "英文 Slug"
         name: "slug"
         widget: "string"
+        pattern:
+          - "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          - "只能使用小写英文字母、数字和连字符，例如 zero-to-one"
+        hint: "用于网址和文件名。不要使用中文、空格或底线。"
 
       - label: "封面"
         name: "cover"
         widget: "image"
         required: false
+        hint: "可选。没有封面时网站会显示默认占位。"
 
-      - label: "分类"
-        name: "categories"
-        widget: "list"
-        required: false
-
-      - label: "标签"
-        name: "tags"
-        widget: "list"
-        required: false
-
+      # 阅读资料
       - label: "阅读状态"
         name: "readingStatus"
         widget: "select"
@@ -107,6 +101,7 @@ collections:
         min: 0
         max: 5
         default: 0
+        hint: "0 代表尚未评分。"
 
       - label: "开始阅读日期"
         name: "startedDate"
@@ -124,9 +119,237 @@ collections:
         time_format: false
         required: false
 
+      # 分类
+      - label: "分类"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        required: false
+        options:
+          - "商业与战略"
+          - "心理与人性"
+          - "财富与投资"
+          - "哲学与思想"
+          - "历史与人物"
+          - "科技与科学"
+          - "生活与成长"
+        hint: "可选择一个或多个主要分类。更具体的主题请放在标签中。"
+
+      - label: "标签"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "填写更具体的主题，例如创新、盈利、习惯。"
+
+      # SEO
+      - label: "SEO 标题"
+        name: "seoTitle"
+        widget: "string"
+        required: false
+        hint: "可选。不填写时系统自动使用书名 + 阅读笔记 + 网站名称。"
+
+      - label: "SEO 描述"
+        name: "seoDescription"
+        widget: "text"
+        required: false
+        hint: "可选。简洁说明这篇阅读笔记包含哪些重点。"
+
+      - label: "社交分享图片"
+        name: "socialImage"
+        widget: "image"
+        required: false
+        hint: "可选。没有填写时优先使用书籍封面，再使用网站默认分享图。"
+
+      # 发布
+      - label: "发布日期"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+
+      - label: "草稿"
+        name: "draft"
+        widget: "boolean"
+        default: true
+        hint: "写完并准备公开后再关闭草稿。"
+
+      # 阅读笔记
       - label: "阅读笔记"
         name: "body"
         widget: "markdown"
+        default: |
+          ## 为什么读这本书
+
+          <!-- 写下你为什么选择这本书、当时遇到的问题，或希望从中找到什么。 -->
+
+          ## 这本书主要讲什么
+
+          <!-- 用自己的话，用 2–5 段说明这本书主要讨论什么。不要写成逐章摘要。 -->
+
+          ## 我最想记住的重点
+
+          ### 01 重点标题
+
+          #### 书中的观点
+
+          <!-- 作者主要表达了什么？尽量用自己的话整理。 -->
+
+          #### 我的理解
+
+          <!-- 你如何理解这个观点？ -->
+
+          #### 为什么重要
+
+          <!-- 为什么这个观点值得留下来？ -->
+
+          #### 我的应用
+
+          <!-- 你会如何把它应用到工作、创业、生活或其他实际场景？ -->
+
+          <!--
+          根据需要复制上面的重点结构。
+          不需要固定 5 个、10 个或任何数量，只留下真正值得记住的内容。
+          -->
+
+          ## 章节阅读笔记
+
+          <!--
+          这个部分是可选的。如果这本书不适合逐章整理，可以删除整个章节。
+
+          ### Chapter X — 章节名称
+
+          #### 这一章让我记住的东西
+
+          1.
+          2.
+          3.
+
+          #### 我的理解
+
+          #### 我会怎么应用
+          -->
+
+          ## 我不同意 / 仍然有疑问的地方
+
+          <!-- 哪些观点你不同意？哪些需要更多条件、证据或实际验证？ -->
+
+          ## 我学到了什么
+
+          <!-- 用简短列表整理以后重新打开这篇笔记时最希望快速记起的内容。 -->
+
+          1.
+          2.
+          3.
+
+          ## 我要采取的行动
+
+          ### Action 01
+
+          <!-- 写下一个真正准备执行的行动。 -->
+
+          ### Action 02
+
+          <!-- 根据需要继续增加或删除。 -->
+
+          ## 一段时间后的回顾
+
+          <!--
+          这个部分可以先保留为空，也可以暂时删除，以后再补回来。
+
+          例如：
+          ### 3 个月后
+          ### 6 个月后
+          ### 1 年后
+
+          回顾哪些观点真正有用、哪些没有，以及实际应用后有什么变化。
+          -->
+        default: |
+          ## 为什么读这本书
+
+          <!-- 写下你为什么选择这本书、当时遇到的问题，或希望从中找到什么。 -->
+
+          ## 这本书主要讲什么
+
+          <!-- 用自己的话，用 2–5 段说明这本书主要讨论什么。不要写成逐章摘要。 -->
+
+          ## 我最想记住的重点
+
+          ### 01 重点标题
+
+          #### 书中的观点
+
+          <!-- 作者主要表达了什么？尽量用自己的话整理。 -->
+
+          #### 我的理解
+
+          <!-- 你如何理解这个观点？ -->
+
+          #### 为什么重要
+
+          <!-- 为什么这个观点值得留下来？ -->
+
+          #### 我的应用
+
+          <!-- 你会如何把它应用到工作、创业、生活或其他实际场景？ -->
+
+          <!--
+          根据需要复制上面的重点结构。
+          不需要固定 5 个、10 个或任何数量，只留下真正值得记住的内容。
+          -->
+
+          ## 章节阅读笔记
+
+          <!--
+          这个部分是可选的。如果这本书不适合逐章整理，可以删除整个章节。
+
+          ### Chapter X — 章节名称
+
+          #### 这一章让我记住的东西
+
+          1.
+          2.
+          3.
+
+          #### 我的理解
+
+          #### 我会怎么应用
+          -->
+
+          ## 我不同意 / 仍然有疑问的地方
+
+          <!-- 哪些观点你不同意？哪些需要更多条件、证据或实际验证？ -->
+
+          ## 我学到了什么
+
+          <!-- 用简短列表整理以后重新打开这篇笔记时最希望快速记起的内容。 -->
+
+          1.
+          2.
+          3.
+
+          ## 我要采取的行动
+
+          ### Action 01
+
+          <!-- 写下一个真正准备执行的行动。 -->
+
+          ### Action 02
+
+          <!-- 根据需要继续增加或删除。 -->
+
+          ## 一段时间后的回顾
+
+          <!--
+          这个部分可以先保留为空，也可以暂时删除，以后再补回来。
+
+          例如：
+          ### 3 个月后
+          ### 6 个月后
+          ### 1 年后
+
+          回顾哪些观点真正有用、哪些没有，以及实际应用后有什么变化。
+          -->
 
   - name: "pages"
     label: "Pages"

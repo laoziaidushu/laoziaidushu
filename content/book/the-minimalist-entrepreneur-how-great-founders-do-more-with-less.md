@@ -18,8 +18,7 @@ startedDate: ""
 finishedDate: ""
 
 categories:
-  - "商业"
-  - "创业"
+  - 商业与战略
 
 tags:
   - "创业"
