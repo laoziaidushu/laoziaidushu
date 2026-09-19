@@ -4,11 +4,9 @@
   <div class="container">
 
     <header class="section-header book-library-header">
+      <p class="book-category-eyebrow">书籍分类</p>
       <h1>{{ .Title }}</h1>
-
-      {{ with .Description }}
-        <p>{{ . }}</p>
-      {{ end }}
+      <p>这个分类下共有 {{ len .Pages }} 本书。</p>
     </header>
 
     {{ partial "book-category-nav.html" . }}
