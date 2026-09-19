@@ -9,7 +9,7 @@ author:
 
 branding:
   logo: ""
-  favicon: ""
+  favicon: "/images/favicon.svg"
 
 social:
   email: ""
