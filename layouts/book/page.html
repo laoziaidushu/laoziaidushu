@@ -55,10 +55,15 @@
             </div>
           {{ end }}
 
-          {{ with .Params.categories }}
+          {{ with .GetTerms "categories" }}
             <div>
               <dt>分类</dt>
-              <dd>{{ delimit . " · " }}</dd>
+              <dd class="book-category-links">
+                {{ range $i, $term := . }}
+                  {{ if $i }}<span aria-hidden="true"> · </span>{{ end }}
+                  <a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a>
+                {{ end }}
+              </dd>
             </div>
           {{ end }}
 

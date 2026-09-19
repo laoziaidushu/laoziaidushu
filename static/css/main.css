@@ -1080,3 +1080,16 @@ a {
 .book-detail-cover img:hover {
   transform: none !important;
 }
+
+.book-category-links a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 3px;
+}
+
+.book-category-links a:hover {
+  color: var(--color-primary);
+  text-decoration-color: currentColor;
+}
+
