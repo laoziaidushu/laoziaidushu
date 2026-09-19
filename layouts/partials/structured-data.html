@@ -146,6 +146,56 @@
 
 {{- end }}
 
+{{/* Book collection pages */}}
+{{- $isBookSection := and .IsSection (eq .Section "book") -}}
+{{- $isCategoryTerm := and
+  (eq .Kind "term")
+  (eq .Data.Plural "categories")
+  (gt (len .Pages) 0)
+-}}
+
+{{- if or $isBookSection $isCategoryTerm }}
+
+{{- $collectionDescription := .Description | default $siteDescription -}}
+{{- $collectionPages := .Pages.ByDate.Reverse -}}
+{{- $collectionID := printf "%s#collection" .Permalink -}}
+{{- $itemListID := printf "%s#itemlist" .Permalink -}}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": {{ $collectionID | jsonify | safeJS }},
+  "url": {{ .Permalink | jsonify | safeJS }},
+  "name": {{ .Title | jsonify | safeJS }},
+  "description": {{ $collectionDescription | jsonify | safeJS }},
+  "inLanguage": {{ $siteLanguage | jsonify | safeJS }},
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": {{ $siteID | jsonify | safeJS }},
+    "name": {{ $siteName | jsonify | safeJS }}
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "@id": {{ $itemListID | jsonify | safeJS }},
+    "numberOfItems": {{ len $collectionPages }},
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "itemListElement": [
+      {{- range $i, $page := $collectionPages }}
+      {{- if $i }},{{ end }}
+      {
+        "@type": "ListItem",
+        "position": {{ add $i 1 }},
+        "url": {{ $page.Permalink | jsonify | safeJS }}
+      }
+      {{- end }}
+    ]
+  }
+}
+</script>
+
+{{- end }}
+
 {{/* Breadcrumbs */}}
 {{- if not .IsHome }}
 <script type="application/ld+json">
