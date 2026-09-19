@@ -48,7 +48,7 @@ collections:
         name: "title"
         widget: "string"
 
-      - label: "英文书名"
+      - label: "原书名"
         name: "originalTitle"
         widget: "string"
         required: false
@@ -65,8 +65,8 @@ collections:
       - label: "简介"
         name: "description"
         widget: "text"
-        required: false
-        hint: "简单说明这本书主要讨论什么。"
+        required: true
+        hint: "用 1–3 句话简单说明这本书主要讨论什么。这个内容也会用于书籍列表和 SEO 描述的备用内容。"
 
       - label: "英文 Slug"
         name: "slug"
@@ -137,7 +137,8 @@ collections:
         name: "categories"
         widget: "select"
         multiple: true
-        required: false
+        required: true
+        min: 1
         options:
           - { label: "商业与战略", value: "business" }
           - { label: "心理与人性", value: "psychology" }
