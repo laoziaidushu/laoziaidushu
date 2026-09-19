@@ -3,6 +3,8 @@
 {{- $siteDescription := hugo.Data.site.description -}}
 {{- $siteLanguage := hugo.Data.site.language | default "zh-CN" -}}
 {{- $siteID := printf "%s#website" site.Home.Permalink -}}
+{{- $organizationID := printf "%s#organization" site.Home.Permalink -}}
+{{- $siteLogo := hugo.Data.site.branding.logo | default "" -}}
 {{- $aboutURL := "/about/" | absURL -}}
 {{- $authorName := hugo.Data.site.author.name | default "" -}}
 
@@ -18,6 +20,21 @@
   "alternateName": {{ $siteAlternateName | jsonify | safeJS }},
   "description": {{ $siteDescription | jsonify | safeJS }},
   "inLanguage": {{ $siteLanguage | jsonify | safeJS }}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": {{ $organizationID | jsonify | safeJS }},
+  "url": {{ site.Home.Permalink | jsonify | safeJS }},
+  "name": {{ $siteName | jsonify | safeJS }},
+  "alternateName": {{ $siteAlternateName | jsonify | safeJS }},
+  "description": {{ $siteDescription | jsonify | safeJS }}
+  {{- with $siteLogo }},
+  "logo": {{ (. | absURL) | jsonify | safeJS }}
+  {{- end }}
 }
 </script>
 {{- end }}
@@ -59,6 +76,7 @@
 
   "publisher": {
     "@type": "Organization",
+    "@id": {{ $organizationID | jsonify | safeJS }},
     "name": {{ $siteName | jsonify | safeJS }},
     "url": {{ site.Home.Permalink | jsonify | safeJS }}
   },
