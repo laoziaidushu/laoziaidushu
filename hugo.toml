@@ -1,5 +1,5 @@
 defaultContentLanguage = "zh-cn"
-baseURL = "https://laoziaidushu.com/"
+baseURL = "/"
 locale = "zh-CN"
 title = "老子爱读书"
 
