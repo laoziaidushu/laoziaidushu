@@ -125,7 +125,7 @@
 
         <p class="book-note-byline">
           整理：
-          <a href="{{ "/about/" | relURL }}">老子爱读书</a>
+          <a href="{{ "/about/" | relURL }}">{{ hugo.Data.site.name }}</a>
           <span aria-hidden="true">·</span>
           最后更新：<time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006年1月2日" }}</time>
         </p>

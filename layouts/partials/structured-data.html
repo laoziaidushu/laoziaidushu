@@ -14,7 +14,7 @@
   "@id": {{ $siteID | jsonify | safeJS }},
   "url": {{ site.Home.Permalink | jsonify | safeJS }},
   "name": {{ $siteName | jsonify | safeJS }},
-  "alternateName": {{ hugo.Data.site.shortName | jsonify | safeJS }},
+  "alternateName": {{ $siteAlternateName | jsonify | safeJS }},
   "description": {{ $siteDescription | jsonify | safeJS }},
   "inLanguage": {{ $siteLanguage | jsonify | safeJS }}
 }
