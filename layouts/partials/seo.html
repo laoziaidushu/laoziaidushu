@@ -42,10 +42,16 @@
 
 <meta name="description" content="{{ $description }}">
 
-{{/* Do not index empty taxonomy term pages */}}
+{{/* Taxonomy indexing rules */}}
 {{- $robots := "index, follow, max-image-preview:large" -}}
 
+{{/* Empty taxonomy pages should not be indexed */}}
 {{- if and (eq .Kind "term") (eq (len .Pages) 0) -}}
+  {{- $robots = "noindex, follow" -}}
+{{- end -}}
+
+{{/* Tag pages are useful for navigation, but not indexed for now */}}
+{{- if and (eq .Kind "term") (eq .Data.Plural "tags") -}}
   {{- $robots = "noindex, follow" -}}
 {{- end -}}
 
