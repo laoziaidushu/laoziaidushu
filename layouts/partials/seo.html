@@ -42,9 +42,14 @@
 
 <meta name="description" content="{{ $description }}">
 
-<meta
-  name="robots"
-  content="index, follow, max-image-preview:large">
+{{/* Do not index empty taxonomy term pages */}}
+{{- $robots := "index, follow, max-image-preview:large" -}}
+
+{{- if and (eq .Kind "term") (eq (len .Pages) 0) -}}
+  {{- $robots = "noindex, follow" -}}
+{{- end -}}
+
+<meta name="robots" content="{{ $robots }}">
 
 <link rel="canonical" href="{{ .Permalink }}">
 

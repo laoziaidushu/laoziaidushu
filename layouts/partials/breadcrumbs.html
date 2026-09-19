@@ -1,21 +1,29 @@
 {{- if not .IsHome }}
 <nav class="breadcrumbs" aria-label="Breadcrumb">
   <ol>
+
     <li>
       <a href="{{ "/" | relURL }}">首页</a>
     </li>
 
-    {{- if eq .Section "book" }}
-      {{- if .IsPage }}
+    {{- if and .IsPage (eq .Section "book") }}
+
       <li>
         <a href="{{ "/book/" | relURL }}">书籍</a>
       </li>
-      {{- end }}
+
+    {{- else if and (eq .Kind "term") (eq .Data.Plural "categories") }}
+
+      <li>
+        <a href="{{ "/book/" | relURL }}">书籍</a>
+      </li>
+
     {{- end }}
 
     <li aria-current="page">
       {{ .Title }}
     </li>
+
   </ol>
 </nav>
 {{- end }}
