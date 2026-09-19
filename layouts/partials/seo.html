@@ -80,6 +80,7 @@
 
 {{ with $image }}
 <meta property="og:image" content="{{ . | absURL }}">
+<meta property="og:image:alt" content="{{ $title }}">
 {{ end }}
 
 <meta name="twitter:card"
@@ -90,6 +91,7 @@
 
 {{ with $image }}
 <meta name="twitter:image" content="{{ . | absURL }}">
+<meta name="twitter:image:alt" content="{{ $title }}">
 {{ end }}
 
 {{ if and .IsPage (eq .Section "book") }}
